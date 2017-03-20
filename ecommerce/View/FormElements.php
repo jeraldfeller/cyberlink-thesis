@@ -127,17 +127,31 @@ class FormElements {
         $products = new Products();
         $output = '';
         if(isset($_SESSION['cart'])){
+            $count = 0;
             foreach($_SESSION['cart'] as $row){
                 $product = $products->getProductById($row['productId']);
-                $output .= '<tr>
+                $output .= '<tr id="index_' . $count . '" data-index="' . $count . '" data-product-id="' . $row['productId'] . '" data-selling-price="' . $product['selling_price'] . '" class="rowItems">
+                            <td style="display: none;"><input type=text" value="' . $row['totalPrice'] . '" id="total_input_' . $count . '"</td>
                             <td> <img width="60" src="http://admin.cyberlink.com/images/products/' . $product['image_name'] . '" alt=""/></td>
                             <td>' . $product['description'] . '</td>
                             <td>
-                                <div class="input-append"><input value="' . $row['quantity'] . '" class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+                                <div class="input-append">
+                                    <input onkeypress="return isNumberKey(event)" onKeyUp="updateQuantity(this)" data-index="' . $count . '" data-product-id="' . $row['productId'] . '" data-selling-price="' . $product['selling_price'] . '" value="' . $row['quantity'] . '" class="span1" style="max-width:34px" placeholder="1" id="qty_' . $count . '" size="16" type="text">
+                                    <button class="btn" type="button" data-action="minus" data-index="' . $count . '" data-product-id="' . $row['productId'] . '" data-selling-price="' . $product['selling_price'] . '" onClick="updateQuantity(this)">
+                                        <i class="icon-minus"></i>
+                                    </button>
+                                    <button class="btn" type="button" data-action="plus" data-index="' . $count . '" data-product-id="' . $row['productId'] . '" data-selling-price="' . $product['selling_price'] . '" onClick="updateQuantity(this)">
+                                        <i class="icon-plus"></i>
+                                    </button>
+                                    <button class="btn btn-danger" type="button" data-action="remove" data-index="' . $count . '" data-product-id="' . $row['productId'] . '" onClick="updateQuantity(this)">
+                                        <i class="icon-remove icon-white"></i>
+                                    </button>
+                                </div>
                             </td>
                             <td>Php' . number_format($product['selling_price'], 2) . '</td>
-                            <td>Php' . number_format($row['totalPrice'], 2) . '</td>
+                            <td>Php<span id="total_price_' . $count . '">' . number_format($row['totalPrice'], 2) . '</span></td>
                         </tr>';
+                $count++;
             }
 
 

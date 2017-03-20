@@ -71,7 +71,7 @@ include 'includes/header.php';
             <div class="row">
                 <!-- Sidebar ================================================== -->
                 <div id="sidebar" class="span3">
-                    <div class="well well-small"><a id="myCart" href="cart"><img src="themes/images/ico-cart.png" alt="cart"><span id="bodyItemCount">0</span> <small>Items in your cart</small> <span class="badge badge-warning pull-right">Php<span id="bodyTotalPartial">0.00</span></span></a></div>
+                    <div class="well well-small"><a id="myCart" href="cart"><img src="themes/images/ico-cart.png" alt="cart"><?php echo $itemCount; ?> <small>Items in your cart</small> <span class="badge badge-warning pull-right">Php<?php echo $partialTotal; ?></span></a></div>
                     <ul id="sideManu" class="nav nav-tabs nav-stacked">
                         <?php
                             echo $view->getDisplayListCategories();

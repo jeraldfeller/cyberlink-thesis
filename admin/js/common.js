@@ -114,3 +114,19 @@ function loadSpinner(btn, action, elem){
         $(elem).css('opacity', 0);
     }
 }
+
+
+function makeid(elem)
+{
+    var text = "";
+    var text2 ="";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    var timeStamp = Math.floor(Date.now() / 1000);
+    for( var i=0; i < 3; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    for( var i=0; i < 3; i++ )
+        text2 += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    $('#'+elem).val(text+'-'+timeStamp+'-'+text2);
+    $('#invoiceIdDisplay').html('Invoice ID: ' +text+'-'+timeStamp+'-'+text2);
+}

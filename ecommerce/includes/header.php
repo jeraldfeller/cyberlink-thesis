@@ -52,8 +52,8 @@ if(isset($_SESSION['cart'])){
             <div class="span6">Welcome!<strong> <?php echo (isset($_SESSION['is_logged']) == true ? $_SESSION['first_name'] . ' ' . $_SESSION['last_name'] : 'User'); ?></strong></div>
             <div class="span6">
                 <div class="pull-right">
-                    <span class="btn btn-mini">Php<span id="headerTotalPartial">0.00</span></span>
-                    <a href="cart"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ <span id="headerItemCount">0</span>  ] Items in your cart </span> </a>
+                    <span class="btn btn-mini">Php<span id="headerTotalPartial"><?php echo $partialTotal; ?></span></span>
+                    <a href="cart"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ <span id="headerItemCount"><?php echo $itemCount; ?></span>  ] Items in your cart </span> </a>
                 </div>
             </div>
         </div>
@@ -76,12 +76,13 @@ if(isset($_SESSION['cart'])){
                     </select>
                     <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
                 </form>
-                <ul id="topMenu" class="nav pull-right">
+                <ul id="topMenu" class="pull-right" style="list-style: none; padding-top: 20px;">
                     <li class="">
                         <?php if(isset($_SESSION['is_logged']) == true) {
-                            echo '<a href="logout" role="button" style="padding-right:0"><span class="btn btn-large btn-warning">Logout</span></a>';
+                            echo '<button class="btn btn-warning">Logout</button>';
                         }else{
-                            echo '<a href="#login" role="button" data-toggle="modal" data-target="#modalLogin" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>';
+                            echo '<button class="btn btn-large btn-success" data-toggle="modal" data-target="#modalLogin">Login</button>';
+                            echo '<a href="register"><button class="btn btn-large btn-success">Register</button></a>';
                         }
                         ?>
                         <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-hidden="true">

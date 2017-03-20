@@ -25,7 +25,7 @@ $viewClass = new FormElements();
                         <div class="x_title">
                             <h2></h2>
                             <ul class="nav navbar-right panel_toolbox_btn panel_toolbox_btn_primary">
-                                <li><button class="btn btn-primary" data-toggle="modal" data-target="#modalAddProduct" onclick="makeid()"><i class="fa fa-plus"></i> Add Products</button>
+                                <li><button class="btn btn-primary" data-toggle="modal" data-target="#modalAddProduct"><i class="fa fa-plus"></i> Add Products</button>
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
@@ -80,7 +80,7 @@ $viewClass = new FormElements();
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <h4>Stock ID</h4>
-                                                    <input type="text" id="addStockId" name="addStockId" class="form-control" readonly>
+                                                    <input type="text" id="addStockId" name="addStockId" class="form-control">
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <h4>Product Name</h4>
@@ -415,7 +415,6 @@ $viewClass = new FormElements();
                                     $('#addBrand').val('');
                                     $('#addProduct').focus();
 
-                                    makeid();
                                     $table.ajax.reload();
 
                                     pNotifyEvent(false, 'success',  'Product Successfully Added');
@@ -599,17 +598,6 @@ $viewClass = new FormElements();
             }
 
 
-
-            function makeid()
-            {
-                var text = "";
-                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                var timeStamp = Math.floor(Date.now() / 1000);
-                for( var i=0; i < 3; i++ )
-                    text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-                $('#addStockId').val(text+timeStamp);
-            }
 
         </script>
 

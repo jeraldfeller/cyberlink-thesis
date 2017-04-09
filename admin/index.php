@@ -1,4 +1,4 @@
 <?php
 require 'Model/Init.php';
 
-Header('location: products');
+Header('location: pos');

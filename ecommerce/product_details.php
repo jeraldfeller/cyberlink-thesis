@@ -12,7 +12,7 @@ $product = $productClass->getProductById($productId);
             <div class="row">
                 <!-- Sidebar ================================================== -->
                 <div id="sidebar" class="span3">
-                    <div class="well well-small"><a id="myCart" href="cart"><img src="themes/images/ico-cart.png" alt="cart"><span id="bodyItemCount">0</span> <small>Items in your cart</small> <span class="badge badge-warning pull-right">Php<span id="bodyTotalPartial">0.00</span></span></a></div>
+                    <div class="well well-small"><a id="myCart" href="cart"><img src="themes/images/ico-cart.png" alt="cart"><span id="bodyItemCount"><?php echo $itemCount; ?></span> <small>Items in your cart</small> <span class="badge badge-warning pull-right">Php<span id="bodyTotalPartial"><?php echo $partialTotal; ?></span></span></a></div>
                     <ul id="sideManu" class="nav nav-tabs nav-stacked">
                         <?php
                         echo $view->getDisplayListCategories();
@@ -93,7 +93,8 @@ $product = $productClass->getProductById($productId);
             $max = <?php echo $product['product_qty']; ?>;
             $quantity = parseInt($('#quantity').val());
             $productId = <?php echo $product['product_id']; ?>;
-            $price = <?php echo $product['selling_price']; ?>
+            $price = <?php echo $product['selling_price']; ?>;
+            $basePrice = <?php echo $product['original_price']; ?>;
 
 
             console.log($quantity);
@@ -107,6 +108,7 @@ $product = $productClass->getProductById($productId);
                 $data = {
                     productId: $productId,
                     price: $price,
+                    basePrice: $basePrice,
                     quantity: $quantity
                 }
                 addToCart($data);

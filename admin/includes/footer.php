@@ -1,7 +1,7 @@
 <!-- footer content -->
 <footer>
     <div class="copyright-info">
-        <p class="pull-right">©2016 All Rights Reserved. Gravizy! Privacy and Terms
+        <p class="pull-right">©2017 All Rights Reserved. Gravizy! Privacy and Terms
         </p>
     </div>
     <div class="clearfix"></div>

@@ -9,7 +9,7 @@ if(isset($_SESSION['cart'])){
     $itemCount = 0;
     $partialTotal = 0.00;
 }
-//unset($_SESSION['cart']);
+//unset($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +54,9 @@ if(isset($_SESSION['cart'])){
                 <div class="pull-right">
                     <span class="btn btn-mini">Php<span id="headerTotalPartial"><?php echo $partialTotal; ?></span></span>
                     <a href="cart"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ <span id="headerItemCount"><?php echo $itemCount; ?></span>  ] Items in your cart </span> </a>
+                    <?php if(isset($_SESSION['is_logged']) == true){ ?>
+                    <a href="my-orders"><span class="btn btn-mini btn-primary"><i class="icon-file icon-white"></i> My Orders </span> </a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -79,7 +82,7 @@ if(isset($_SESSION['cart'])){
                 <ul id="topMenu" class="pull-right" style="list-style: none; padding-top: 20px;">
                     <li class="">
                         <?php if(isset($_SESSION['is_logged']) == true) {
-                            echo '<button class="btn btn-warning">Logout</button>';
+                            echo '<a href="logout.php"><button class="btn btn-warning">Logout</button></a>';
                         }else{
                             echo '<button class="btn btn-large btn-success" data-toggle="modal" data-target="#modalLogin">Login</button>';
                             echo '<a href="register"><button class="btn btn-large btn-success">Register</button></a>';

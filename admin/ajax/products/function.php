@@ -1,6 +1,7 @@
 <?php
 require '../../Model/Init.php';
 require '../../Model/Products.php';
+require '../../Model/Orders.php';
 
 
 $action = $_GET['action'];
@@ -136,4 +137,11 @@ switch($action){
         echo $productsClass->getProducts();
         break;
 
+    case 'checkOut':
+        $data = json_decode($_POST['param'], true);
+        $ordersClass = new Orders();
+        $ordersClass->insertOrders($data);
+
+        echo true;
+        break;
 }

@@ -10,12 +10,12 @@ else if (window.ActiveXObject)
 }
 
 
-function loginAction(data)
+function updateOrder(data)
 {
     if(XMLHttpRequestObject)
     {
 
-        XMLHttpRequestObject.open("POST", "http://cyberlink.com/ajax/customer/function.php?action=login");
+        XMLHttpRequestObject.open("POST", "http://admin.cyberlink.com/ajax/invoice/function.php?action=update");
 
 
         XMLHttpRequestObject.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
@@ -25,16 +25,10 @@ function loginAction(data)
             if (XMLHttpRequestObject.readyState == 4 && XMLHttpRequestObject.status == 200)
             {
                 var returnedData = XMLHttpRequestObject.responseText;
-                if(returnedData == true){
-                    location.reload();
-                }else if (returnedData == false){
-                    $('#proccessing').css('display', 'none');
-                    $('#login').css('display', 'inline');
-                    $('#register').css('display', 'inline');
-                   $('#loginMsg').html('<div class="alert alert-error"><strong>Incorrect Email or Password</strong></div>');
-                }
-
-
+                pNotifyEvent(false, 'success',  'Order Successfully Updated');
+                setTimeout(function(){
+                    window.location.href = returnedData;
+                }, 1000)
 
             }else if (XMLHttpRequestObject.status == 408 || XMLHttpRequestObject.status == 503){
                 pNotifyEvent(true, 'error', 'Ops... Something went wrong, please try again.')

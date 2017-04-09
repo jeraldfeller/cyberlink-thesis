@@ -82,7 +82,7 @@
                         <br />
                         <div>
                             <h1><img src="images/logo_icon.png" alt="Cyber Link Compu Sales"></h1>
-                            <p>©2016 All Rights Reserved. Cyber Link Compu Sales. <small>computer sales and repairs</small></p>
+                            <p>©2017 All Rights Reserved. Cyber Link Compu Sales. <small>computer sales and repairs</small></p>
                         </div>
                     </div>
                 </form>

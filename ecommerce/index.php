@@ -71,8 +71,10 @@ include 'includes/header.php';
             <div class="row">
                 <!-- Sidebar ================================================== -->
                 <div id="sidebar" class="span3">
-                    <div class="well well-small"><a id="myCart" href="cart"><img src="themes/images/ico-cart.png" alt="cart"><?php echo $itemCount; ?> <small>Items in your cart</small> <span class="badge badge-warning pull-right">Php<?php echo $partialTotal; ?></span></a></div>
+                    <div class="well well-small"><a id="myCart" href="cart"><img src="themes/images/ico-cart.png" alt="cart"><span id="bodyItemCount"><?php echo $itemCount; ?></span> <small>Items in your cart</small> <span class="badge badge-warning pull-right">Php<span id="bodyTotalPartial"><?php echo $partialTotal; ?></span></span></a></div>
                     <ul id="sideManu" class="nav nav-tabs nav-stacked">
+
+                        <!-- categories -->
                         <?php
                             echo $view->getDisplayListCategories();
                         ?>
@@ -128,19 +130,20 @@ include 'includes/header.php';
     <!-- /MODAL END FOR ADD CART-->
 
 <script>
-   function addToCartSingle(elem){
+    function addToCartSingle(elem){
         $quantity = 1;
         $productId = elem.getAttribute('data-product-id');
         $price = elem.getAttribute('data-selling-price');
+        $basePrice = elem.getAttribute('data-base-price');
 
+        $data = {
+            productId: $productId,
+            price: $price,
+            basePrice: $basePrice,
+            quantity: $quantity
 
-            $data = {
-                productId: $productId,
-                price: $price,
-                quantity: $quantity
         }
-
-       addToCart($data);
+        addToCart($data);
     }
 </script>
 <?php

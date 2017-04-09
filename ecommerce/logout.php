@@ -1,8 +1,9 @@
 <?php
 session_start();
+unset($_SESSION['is_logged']);
+unset($_SESSION['customer_id']);
+unset($_SESSION['first_name']);
+unset($_SESSION['last_name'] );
 session_unset();
 session_destroy();
-session_write_close();
-setcookie(session_name(),'',0,'/');
-session_regenerate_id(true);
-Header('Location: index');
+header('Location: index.php');

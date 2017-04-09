@@ -6,6 +6,22 @@ class Products {
     public $debug = TRUE;
     protected $db_pdo;
 
+    public function getPosItems(){
+        $pdo = $this->getPdo();
+        $sql = 'SELECT category.title,
+                       brand.brand_name,
+                       products.*
+                  FROM `category`, `brand`, `products`
+                  WHERE products.product_qty != 0 AND products.cat_id = category.cat_id AND products.brand_id = brand.brand_id';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $content = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $content[] = $row;
+        }
+        return $content;
+    }
+
     public function getBrand(){
         $pdo = $this->getPdo();
         $sql = 'SELECT `brand_name` FROM `brand`';

@@ -31,7 +31,7 @@ function loginAction(data)
                     $('#proccessing').css('display', 'none');
                     $('#login').css('display', 'inline');
                     $('#register').css('display', 'inline');
-                   $('#loginMsg').html('<div class="alert alert-error"><strong>Incorrect Email or Password</strong></div>');
+                    $('#loginMsg').html('<div class="alert alert-error"><strong>Incorrect Email or Password</strong></div>');
                 }
 
 
